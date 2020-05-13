@@ -43,6 +43,10 @@ app_purbeurre/static/ all the static files, with Boostrap, JQuery, Java Script, 
 app_purbeurre/templates/ all the basics and home html templates
 app_purbeurre/tests/ views, urls, command and models are tested there
 
+## Tests :
+
+If you want to run the tests files, please be sure to locally collect all the static files by running `python manage.py collectstatic`
+
 ## Built with :
 
 Visual Studio Code (IDE)\
