@@ -7,11 +7,8 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.test import TestCase, Client, TransactionTestCase
-from django.db import IntegrityError
+from django.test import TestCase, Client
 from django.urls import reverse
-from django.core.management import call_command
-from unittest.mock import patch
 
 from search.models import Category, Product
 
@@ -82,7 +79,7 @@ class TestSearch(TestCase):
 
     def test_search_page_returns_200(self):     # checking ProductSearchView()
         """To test the status code and the search page"""
-        response = self.client.get(self.search_url +"?query=food")
+        response = self.client.get(self.search_url + "?query=food")
         self.assertTemplateUsed(response, 'search/search_results.html')
         self.assertEqual(response.status_code, 200)
 
