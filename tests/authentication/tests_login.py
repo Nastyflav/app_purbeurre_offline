@@ -9,7 +9,6 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 from django.test import TestCase, Client
 from django.urls import reverse
-from django.db import IntegrityError
 from authentication.models import User
 
 

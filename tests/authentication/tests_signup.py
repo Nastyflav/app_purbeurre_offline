@@ -24,7 +24,7 @@ class TestAuthentication(TestCase):
         self.user.save()
 
     def test_signup_and_str_return_when_user_creation_is_ok(self):
-        """Test when the creation of new user is authorized""" 
+        """Test when the creation of new user is authorized"""
         new_user_email = 'newuser@test.dj'
         user = User.objects.create(email=new_user_email)
         user.set_password('@supernouveau')
