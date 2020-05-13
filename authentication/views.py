@@ -34,5 +34,4 @@ class SignUp(FormView):
 
 def profile(request):
     """User profile"""
-
     return render(request, "registration/user_profile.html")
