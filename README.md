@@ -7,7 +7,7 @@ quality. The program also gives you the possibility of creating an user account 
 
 # What does Pur Beurre really do ?
 ----------------
-Once you arrive on the [Pur Beurre application page](https://pbflavien.herokuapp.com) :\
+Once you arrive on the [Pur Beurre application page](https://purbeurreflavien.herokuapp.com/) :\
 	- you can make a simple request by using the query form, then visualize the results \
 	- you can create an account and then log in to be able to save your future search results
 
@@ -20,10 +20,9 @@ or clone with SSH : git@github.com:Nastyflav/App_Pur_Beurre_OC.git \
 into a repo on your local machine \
 Documentation about pull --> https://help.github.com/en/articles/cloning-a-repository 
 
-Set your virtual environment under python3.8.x `pip install virtualenv`\
-Create an new virtual environment `virtualenv -p python env`\
-Activate it `source env/Scripts/activate.bat`\
-Install requirements `pip install -r requirements.txt`
+Set your virtual environment under python3.8.x `pip install pipenv`\
+Create an new virtual environment `pipenv install`\
+Activate it `pipenv shell`
 
 ## Dependancies :
 
@@ -42,7 +41,7 @@ app_purbeurre/save/ products saving functionalities\
 app_purbeurre/search/ products searching and printing functionalities\
 app_purbeurre/static/ all the static files, with Boostrap, JQuery, Java Script, images and css/sass libraries\
 app_purbeurre/templates/ all the basics and home html templates
-app_purbeurre/tests/ all the views, urls and models are tested there
+app_purbeurre/tests/ views, urls, command and models are tested there
 
 ## Built with :
 
