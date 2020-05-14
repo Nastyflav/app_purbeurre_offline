@@ -19,6 +19,7 @@ class TestUrls(TestCase):
         cls.details_url = reverse('search:product-details', args=[1])
 
     def test_search_page_url(self):
+        """To check the search url when requested"""
         self.assertEqual(self.search_url, '/search/')
 
     def test_details_page_url(self):
