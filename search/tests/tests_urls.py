@@ -18,11 +18,8 @@ class TestUrls(TestCase):
         cls.search_url = reverse('search:search')
         cls.details_url = reverse('search:product-details', args=[1])
 
-    def test_search_page_returns_200(self):
-        """To test the status code of the search page"""
-        response = self.client.get(self.search_url + "?query=food")
-        self.assertTemplateUsed(response, 'search/search_results.html')
-        self.assertEqual(response.status_code, 200)
+    def test_search_page_url(self):
+        self.assertEqual(self.search_url, '/search/')
 
     def test_details_page_url(self):
         """To test the url when product details are requested"""
