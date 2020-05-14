@@ -7,5 +7,23 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.test import TestCase, Client
+from django.test import TestCase
 from django.urls import reverse
+
+
+class TestUrls(TestCase):
+    """To test the search app urls file"""
+    @classmethod
+    def setUpTestData(cls):
+        cls.search_url = reverse('search:search')
+        cls.details_url = reverse('search:product-details', args=[1])
+
+    def test_search_page_returns_200(self):
+        """To test the status code of the search page"""
+        response = self.client.get(self.search_url + "?query=food")
+        self.assertTemplateUsed(response, 'search/search_results.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_details_page_url(self):
+        """To test the url when product details are requested"""
+        self.assertEqual(self.details_url, '/search/details/1')
