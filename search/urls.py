@@ -8,6 +8,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 """
 
 from django.urls import path
+
 from . import views
 
 app_name = 'search'
