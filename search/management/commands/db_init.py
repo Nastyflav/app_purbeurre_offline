@@ -12,13 +12,15 @@ from django.core.management.base import BaseCommand, CommandError
 from .database import Database
 import requests
 
+NUTRISCORE_FR = ["a", "b", "c", "d", "e"]
+STDOUT=True
+
 
 class Command(BaseCommand):
     """Command class for custom django commands"""
     help = "Load datas from the OFF API to our database"
 
     def handle(self, *args, **options):
-        """Requests the API then fills the DB"""
         self.db = Database()
         self.db.add_categories()
         self.db.add_products()
