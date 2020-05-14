@@ -10,6 +10,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.views.generic import FormView
+
 from .forms import SignUpForm
 
 
@@ -22,7 +23,6 @@ class SignUp(FormView):
 
     def form_valid(self, form):
         """if the form is validated"""
-
         form.save()
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password1')
