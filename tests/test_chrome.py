@@ -13,7 +13,7 @@ from django.test import TestCase
 
 class TestChrome(TestCase):
     """To test the user story using Chrome browser"""
-    def setUp(self)
+    def setUp(self):
         self.browser = webdriver.Chrome(executable_path='./chromedriver')
         self.browser.implicitly_wait(3)
 
@@ -22,5 +22,5 @@ class TestChrome(TestCase):
 
     def test(self):
         self.browser.get('https://purbeurreflavien.herokuapp.com/')
-        self.assertIn('Beurre', self.browser.title)  #
+        self.assertIn('Beurre', self.browser.title)
         self.fail('Test terminé !')
