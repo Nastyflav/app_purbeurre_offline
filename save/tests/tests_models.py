@@ -20,7 +20,7 @@ class TestModels(TestCase):
         """Create a temp user and temp products to perform tests"""
         user = User.objects.create(email='remy@purbeurre.fr')
 
-        category = Category.objects.create(name="Pate à tartiner")
+        Category.objects.create(name="Pate à tartiner")
 
         product_1 = Product.objects.create(
             name="Beurre de cacahuètes",
@@ -50,7 +50,7 @@ class TestModels(TestCase):
             salt_for_100g="3.25",
         )
 
-        favorite = Favorites.objects.create(
+        Favorites.objects.create(
             original_product_id=product_1,
             substitute_id=product_2,
             user_id=user
