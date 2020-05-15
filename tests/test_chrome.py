@@ -7,20 +7,30 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from selenium import webdriver
-from django.test import TestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium.webdriver.common.keys import Keys
 
 
-class TestChrome(TestCase):
-    """To test the user story using Chrome browser"""
-    def setUp(self):
-        self.browser = webdriver.Chrome(executable_path='./chromedriver')
-        self.browser.implicitly_wait(3)
+class TestChrome(StaticLiveServerTestCase):
+    """To test a user story using Chrome"""
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.selenium = WebDriver()
+        cls.selenium.implicitly_wait(10)
 
-    def tearDown(self):
-        self.browser.quit()
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super().tearDownClass()
 
-    def test(self):
-        self.browser.get('https://purbeurreflavien.herokuapp.com/')
-        self.assertIn('Beurre', self.browser.title)
-        self.fail('Test terminé !')
+    def test_login(self):
+        """Test when the user wants to log in"""
+        self.selenium.get('%s%s' % (self.live_server_url, '/authentication/'))
+        username_input = self.selenium.find_element_by_name("username")
+        username_input.send_keys('selenium@user.test')
+        password_input = self.selenium.find_element_by_name("password")
+        password_input.send_keys('test2020')
+        submit = self.selenium.find_element_by_id("submit-button")
+        submit.send_keys(Keys.RETURN)
