@@ -7,12 +7,12 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.contrib.staticfiles.testing import LiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 
 
-class TestChrome(StaticLiveServerTestCase):
+class TestChrome(LiveServerTestCase):
     """To test a user story using Chrome"""
     @classmethod
     def setUpClass(cls):
@@ -39,9 +39,9 @@ class TestChrome(StaticLiveServerTestCase):
         """To test when the user wants to search a prod and its details"""
         self.selenium.get('%s%s' % (self.live_server_url, '/'))
         query_input = self.selenium.find_element_by_id("query")
-        query_input.send_keys('frites')
+        query_input.send_keys('nutella')
         search = self.selenium.find_element_by_id("search-btn")
         search.send_keys(Keys.RETURN)
         product=self.selenium.find_element_by_xpath("//input[@id='details-link']")[0]
-
+        product.click()
 

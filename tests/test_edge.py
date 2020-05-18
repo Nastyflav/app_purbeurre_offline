@@ -7,12 +7,12 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.contrib.staticfiles.testing import LiveServerTestCase
 from selenium.webdriver.edge.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 
 
-class TestEdge(StaticLiveServerTestCase):
+class TestEdge(LiveServerTestCase):
     """To test a user story using Edge"""
     @classmethod
     def setUpClass(cls):
