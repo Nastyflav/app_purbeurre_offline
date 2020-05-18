@@ -12,7 +12,7 @@ from selenium.webdriver.edge.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 
 
-class TestFirefox(StaticLiveServerTestCase):
+class TestEdge(StaticLiveServerTestCase):
     """To test a user story using Edge"""
     @classmethod
     def setUpClass(cls):

@@ -34,3 +34,14 @@ class TestChrome(StaticLiveServerTestCase):
         password_input.send_keys('test2020')
         submit = self.selenium.find_element_by_id("submit-button")
         submit.send_keys(Keys.RETURN)
+
+    def test_search_product_details(self):
+        """To test when the user wants to search a prod and its details"""
+        self.selenium.get('%s%s' % (self.live_server_url, '/'))
+        query_input = self.selenium.find_element_by_id("query")
+        query_input.send_keys('frites')
+        search = self.selenium.find_element_by_id("search-btn")
+        search.send_keys(Keys.RETURN)
+        product=self.selenium.find_element_by_xpath("//input[@id='details-link']")[0]
+
+
