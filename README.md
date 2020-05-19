@@ -28,7 +28,7 @@ Activate it `pipenv shell`
 
 From the root folder `python ./manage.py test --pattern="tests_*.py"`\
 To measure the test coverage `coverage run --source='.' python manage.py test`\
-Then `coverage report`\
+Then `coverage report`
 
 To launch the functional tests, prioritize separate launchings from the methods you want to test\
 For example : `python .\manage.py test tests.test_edge.TestEdge.test_logout`
