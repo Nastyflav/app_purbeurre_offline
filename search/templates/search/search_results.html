@@ -36,8 +36,8 @@
         </div>  
           <div class="card-body">
             <a href="{% url 'save:substitution' product.id %}">
-            <h5 class="card-title product-title">{{ product.name }}</h5></a>
-            <a class="nav-link text-white-75 font-weight-light mb-5" href="{% url 'search:product-details' product.id %}">Plus de détails
+            <h5 class="card-title product-title" id="product-title">{{ product.name }}</h5></a>
+            <a class="nav-link text-white-75 font-weight-light mb-5" href="{% url 'search:product-details' product.id %}" id="details-link">Plus de détails
               <i class="fas fa-info-circle fa-2x fa-fw" title="Fiche produit"></i></a>
           </div>
       </div>

@@ -53,13 +53,13 @@
                 <div class="card-body">
                     <h5 class="card-title product-title">{{ product.name }}</h5>
                     <a class="nav-link text-white-75 font-weight-light mb-5" href="{% url 'search:product-details' product.id %}">Plus de détails
-                    <i class="fas fa-info-circle fa-2x fa-fw" title="Fiche produit" id="details_link"></i></a>
+                    <i class="fas fa-info-circle fa-2x fa-fw" title="Fiche produit"></i></a>
                     <form action="{% url 'save:save' %}" method="POST" >
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ request.path }}">
                         <input type="hidden" name="original_product_id" value="{{ id }}">
                         <input type="hidden" name="substitute_id" value="{{ product.id }}">
-					    <button type="submit" class="btn btn-outline-info">
+					    <button type="submit" class="btn btn-outline-info" id="save-btn">
 	          		    <i class="far fa-save fa-2x fa-fw"></i> Sauvegarder</button>
 	          	    </form>
                 </div>
