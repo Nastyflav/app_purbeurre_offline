@@ -70,10 +70,10 @@ class TestFirefox(LiveServerTestCase):
         temp_user_creation()
         db_init()
 
-    # @classmethod
-    # def tearDownClass(cls):
-    #     cls.selenium.quit()
-    #     super().tearDownClass()
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super().tearDownClass()
 
     def test_login(self):
         """Test when the user wants to log in"""
