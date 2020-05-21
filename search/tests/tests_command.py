@@ -9,6 +9,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 from django.test import TransactionTestCase
 from django.core.management import call_command
+from unittest.mock import patch
 
 from search.models import Category, Product
 
@@ -22,6 +23,6 @@ class TestDbInit(TransactionTestCase):
         self.assertEqual(Category.objects.all().count(), 15)
 
     def test_insert_products(self):
-        """To check that a certain amount of products are there"""
+        """To check that a precise amount of products is there"""
         call_command("db_init")
         self.assertEqual(Product.objects.all().count(), 3718)
