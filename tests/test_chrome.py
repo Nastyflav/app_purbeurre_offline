@@ -10,6 +10,9 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 from django.contrib.staticfiles.testing import LiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 from authentication.models import User
 from search.models import Category, Product
@@ -58,19 +61,15 @@ def db_init():
 
 class TestChrome(LiveServerTestCase):
     """To test a user story using Chrome"""
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.selenium = WebDriver()
-        cls.selenium.implicitly_wait(10)
-        cls.selenium.maximize_window()
+    def setUp(self):
+        self.selenium = WebDriver()
+        self.selenium.implicitly_wait(10)
+        self.selenium.maximize_window()
         temp_user_creation()
         db_init()
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.selenium.quit()
-        super().tearDownClass()
+    def tearDown(self):
+        self.selenium.close()
 
     def test_login(self):
         """Test when the user wants to log in"""
@@ -89,8 +88,8 @@ class TestChrome(LiveServerTestCase):
         query_input.send_keys('nutella')
         search = self.selenium.find_element_by_id("search-btn")
         search.send_keys(Keys.RETURN)
-        product = self.selenium.find_element_by_xpath(
-            "//*[@id='details-link']")
+        product = WebDriverWait(self.selenium, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[@id='details-link']")))
         product.click()
 
     def test_save_product(self):
@@ -100,13 +99,15 @@ class TestChrome(LiveServerTestCase):
         query_input.send_keys('nutella')
         search = self.selenium.find_element_by_id("search-btn")
         search.send_keys(Keys.RETURN)
-        product = self.selenium.find_element_by_xpath(
-            "//*[@id='product-title']")
+        product = WebDriverWait(self.selenium, 30).until(
+            EC.element_to_be_clickable((By.ID, "product-title")))
         product.click()
-        substitute = self.selenium.find_element_by_xpath("//*[@id='save-btn']")
+        substitute = WebDriverWait(self.selenium, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[@id='save-btn']")))
         substitute.click()
 
     def test_logout(self):
         self.test_login()
-        logout = self.selenium.find_element_by_xpath("//*[@id='logout']")
+        logout = WebDriverWait(self.selenium, 30).until(
+            EC.element_to_be_clickable((By.XPATH, "//*[@id='logout']")))
         logout.click()
