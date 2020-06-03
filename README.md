@@ -15,8 +15,8 @@ Pur Beurre is hosted by [DigitalOcean](https://www.digitalocean.com/), and for n
 
 # For developpers, how to install and work on the app :
 --------------
-Clone with https : https://github.com/Nastyflav/App_Pur_Beurre_OC.git \
-or clone with SSH : git@github.com:Nastyflav/App_Pur_Beurre_OC.git \
+Clone with https : https://github.com/Nastyflav/P10_PurBeurre.git \
+or clone with SSH : git@github.com:Nastyflav/P10_PurBeurre.git \
 into a repo on your local machine \
 Documentation about pull --> https://help.github.com/en/articles/cloning-a-repository 
 
