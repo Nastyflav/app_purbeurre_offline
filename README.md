@@ -11,7 +11,7 @@ Once you arrive on the [Pur Beurre application page](https://purbeurreflavien.he
 	- you can make a simple request by using the query form, then visualize the results \
 	- you can create an account and then log in to be able to save your future search results
 
-Pur Beurre is hosted by [Heroku](https://www.heroku.com/), and for now is only available in french language.	
+Pur Beurre is hosted by [DigitalOcean](https://www.digitalocean.com/), and for now is only available in french language.	
 
 # For developpers, how to install and work on the app :
 --------------
@@ -20,18 +20,17 @@ or clone with SSH : git@github.com:Nastyflav/App_Pur_Beurre_OC.git \
 into a repo on your local machine \
 Documentation about pull --> https://help.github.com/en/articles/cloning-a-repository 
 
-Set your virtual environment under python3.8.x `pip install pipenv`\
-Create an new virtual environment `pipenv install`\
-Activate it `pipenv shell`
+Set your virtual environment under python3.8.x `pip install virtualenv`\
+Create an new virtual environment `virtualenv -p python3 env`\
+Activate it `source env/scripts/activate`\
+Install all the packages `pip install -r requirements.txt`\
 
-# For developpers, how to launch tests :
+Configure your local settings in app_purbeurre/settings/__init__py\
+Make the migrations : `python manage.py makemigrations` then `python manage.py migrate`\
 
-From the root folder `python ./manage.py test --pattern="tests_*.py"`\
-To measure the test coverage `coverage run --source='.' python manage.py test`\
-Then `coverage report`
+Fill the database : `python manage.py command db_init`\
 
-To launch the functional tests, prioritize separate launchings from the methods you want to test\
-For example : `python .\manage.py test tests.test_edge.TestEdge.test_logout`
+To launch tests `python manage.py test`\
 
 ## Dependancies :
 
