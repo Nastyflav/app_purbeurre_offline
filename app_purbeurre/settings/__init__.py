@@ -13,10 +13,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 
-# Configure Django App for Heroku.
-import django_heroku
-
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,12 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'z*?oU1#],e(x\\\tG]JLN\rcW=g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('ENV') == 'PRODUCTION':
-    DEBUG = False
-else:
-    DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ['purbeurreflavien.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['167.71.140.193']
 
 
 # Application definition
@@ -134,16 +127,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_URL = "/authentication"
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
