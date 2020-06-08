@@ -23,14 +23,14 @@ Documentation about pull --> https://help.github.com/en/articles/cloning-a-repos
 Set your virtual environment under python3.8.x `pip install virtualenv`\
 Create an new virtual environment `virtualenv -p python3 env`\
 Activate it `source env/scripts/activate`\
-Install all the packages `pip install -r requirements.txt`\
+Install all the packages `pip install -r requirements.txt`
 
 Configure your local settings in app_purbeurre/settings/__init__py\
-Make the migrations : `python manage.py makemigrations` then `python manage.py migrate`\
+Make the migrations : `python manage.py makemigrations` then `python manage.py migrate`
 
-Fill the database : `python manage.py command db_init`\
+Fill the database : `python manage.py command db_init`
 
-To launch tests `python manage.py test`\
+To launch tests `python manage.py test`
 
 ## Dependancies :
 
