@@ -9,6 +9,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 from authentication.models import User
 from search.models import Category, Product
