@@ -13,13 +13,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium import webdriver
 
 from authentication.models import User
 from search.models import Category, Product
-
-firefox_options = webdriver.FirefoxOptions()
-firefox_options.headless = True
 
 
 def temp_user_creation():
