@@ -66,15 +66,19 @@ def db_init():
 
 class TestChrome(StaticLiveServerTestCase):
     """To test a user story using Chrome"""
-    def setUp(self):
-        self.selenium = WebDriver()
-        self.selenium.implicitly_wait(10)
-        self.selenium.maximize_window()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.selenium = webdriver.Chrome(chrome_options=chrome_options)
+        cls.selenium.implicitly_wait(30)
+        cls.selenium.maximize_window()
         temp_user_creation()
         db_init()
 
-    def tearDown(self):
-        self.selenium.close()
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        cls.selenium.quit()
 
     def test_login(self):
         """Test when the user wants to log in"""
