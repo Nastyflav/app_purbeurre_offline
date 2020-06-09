@@ -7,12 +7,8 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import LiveServerTestCase
-from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium import webdriver
 
 from authentication.models import User
 from search.models import Category, Product
@@ -64,15 +60,17 @@ def db_init():
 
 class TestFirefox(LiveServerTestCase):
     """To test a user story using Firefox"""
-    def setUp(self):
-        self.selenium = WebDriver()
-        self.selenium.implicitly_wait(10)
-        self.selenium.maximize_window()
-        temp_user_creation()
-        db_init()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.selenium = webdriver.Chrome(chrome_options=chrome_options)
+        cls.selenium.implicitly_wait(30)
+        cls.selenium.maximize_window()
 
-    def tearDown(self):
-        self.selenium.close()
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        cls.selenium.quit()
 
     def test_login(self):
         """Test when the user wants to log in"""
