@@ -58,7 +58,7 @@ def db_init():
     data.save()
 
 
-class TestFirefox(LiveServerTestCase):
+class TestFirefox(StaticLiveServerTestCase):
     """To test a user story using Firefox"""
     @classmethod
     def setUpClass(cls):
