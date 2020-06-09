@@ -7,7 +7,7 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from django.contrib.staticfiles.testing import LiveServerTestCase
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
