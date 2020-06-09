@@ -104,11 +104,6 @@ class TestViews(TestCase):
         response = self.client.get(self.search_url + "?query=banane")
         self.assertEqual(response.context_data["object_list"].count(), 0)
 
-    def test_detail_url_template_and_valid_id(self):
-        response = self.client.get('/search/details/1')
-        self.assertTemplateUsed(response, 'search/product_details.html')
-        self.assertEqual(response.status_code, 200)
-
     def test_details_page_error_404_when_no_such_product(self):
         """To check the invalid response when there's no food"""
         response = self.client.get('/search/details/15')
