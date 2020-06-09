@@ -63,7 +63,7 @@ class TestFirefox(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.selenium = webdriver.Chrome(chrome_options=chrome_options)
+        cls.selenium = webdriver.Firefox(firefox_options=firefox_options)
         cls.selenium.implicitly_wait(30)
         cls.selenium.maximize_window()
 
