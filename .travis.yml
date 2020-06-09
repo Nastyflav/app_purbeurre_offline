@@ -4,7 +4,7 @@ python:
 
 addons:
   chrome: stable
-  firefox: latest
+  firefox: stable
 
 before_script:
       - pip install -r requirements.txt
