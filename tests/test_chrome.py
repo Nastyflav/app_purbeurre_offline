@@ -7,12 +7,13 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 
 from authentication.models import User
 from search.models import Category, Product
@@ -63,7 +64,7 @@ def db_init():
     data.save()
 
 
-class TestChrome(LiveServerTestCase):
+class TestChrome(StaticLiveServerTestCase):
     """To test a user story using Chrome"""
     def setUp(self):
         self.selenium = WebDriver()
