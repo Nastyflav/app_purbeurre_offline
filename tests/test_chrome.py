@@ -17,6 +17,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from authentication.models import User
 from search.models import Category, Product
 
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('window-size=1920x1080')
+
 
 def temp_user_creation():
     user = User.objects.create(email='selenium@user.test')

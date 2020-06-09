@@ -17,6 +17,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from authentication.models import User
 from search.models import Category, Product
 
+firefox_options = webdriver.FirefoxOptions()
+firefox_options.headless = True
+
 
 def temp_user_creation():
     user = User.objects.create(email='selenium@user.test')
