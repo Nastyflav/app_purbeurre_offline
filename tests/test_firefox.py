@@ -7,8 +7,8 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import LiveServerTestCase
-from selenium.webdriver.firefox.webdriver import WebDriver
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
+from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -16,6 +16,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from authentication.models import User
 from search.models import Category, Product
+
+firefox_options = webdriver.FirefoxOptions()
+firefox_options.headless = True
 
 
 def temp_user_creation():
@@ -59,11 +62,12 @@ def db_init():
     data.save()
 
 
-class TestFirefox(LiveServerTestCase):
+class TestFirefox(StaticLiveServerTestCase):
     """To test a user story using Firefox"""
     def setUp(self):
-        self.selenium = WebDriver()
-        self.selenium.implicitly_wait(10)
+        self.selenium = webdriver.Firefox(firefox_options=firefox_options)
+        self.selenium.get(self.live_server_url)
+        self.selenium.implicitly_wait(30)
         self.selenium.maximize_window()
         temp_user_creation()
         db_init()

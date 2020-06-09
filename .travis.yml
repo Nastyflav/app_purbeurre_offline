@@ -1,9 +1,15 @@
+dist: bionic
 language: python
+
 python:
       - '3.8'
 
+addons:
+  chrome: stable
+  firefox: latest
+
 before_script:
-      - pip install -r requirements.txt
+      - install-webdrivers
 
 branches:
     only:
@@ -15,4 +21,4 @@ services:
       - postgresql
 
 script:
-      - python manage.py test
+      - python manage.py test -v2

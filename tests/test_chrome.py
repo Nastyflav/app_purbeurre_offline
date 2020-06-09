@@ -7,15 +7,20 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.contrib.staticfiles.testing import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
 
 from authentication.models import User
 from search.models import Category, Product
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('window-size=1920x1080')
 
 
 def temp_user_creation():
@@ -59,11 +64,12 @@ def db_init():
     data.save()
 
 
-class TestChrome(LiveServerTestCase):
+class TestChrome(StaticLiveServerTestCase):
     """To test a user story using Chrome"""
     def setUp(self):
-        self.selenium = WebDriver()
-        self.selenium.implicitly_wait(10)
+        self.selenium = webdriver.Chrome(chrome_options=chrome_options)
+        self.selenium.get(self.live_server_url)
+        self.selenium.implicitly_wait(30)
         self.selenium.maximize_window()
         temp_user_creation()
         db_init()
