@@ -18,8 +18,7 @@ from authentication.models import User
 from search.models import Category, Product
 
 firefox_options = webdriver.FirefoxOptions()
-firefox_options.add_argument('--headless')
-firefox_options.add_argument('window-size=1920x1080')
+firefox_options.headless = True
 
 
 def temp_user_creation():
