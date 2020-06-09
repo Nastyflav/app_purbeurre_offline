@@ -23,6 +23,6 @@ class TestDbInit(TransactionTestCase):
         self.assertEqual(Category.objects.all().count(), 15)
 
     def test_insert_products(self):
-        """To check that a precise amount of products is there"""
+        """To check that a certain amount of products is there"""
         call_command("db_init")
-        self.assertEqual(Product.objects.all().count(), 3718)
+        self.assertTrue(Product.objects.all().count() > 3000)
