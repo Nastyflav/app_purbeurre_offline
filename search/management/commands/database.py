@@ -68,26 +68,29 @@ class Database():
                         except (IntegrityError, DecimalException):
                             pass
                     else:
-                        Product.objects.filter(
-                            barcode=product.get("code", None)).update(
-                            name=product.get("product_name_fr"),
-                            category_id=Category.objects.get(
-                                name=category
-                            ),
-                            store=product.get('stores'),
-                            nutriscore=product.get("nutriscore_grade"),
-                            image=product.get("image_url"),
-                            url=product.get("url"),
-                            lipids_for_100g=product["nutriments"].get(
-                                "fat_100g"
-                            ),
-                            saturated_fats_for_100g=product["nutriments"].get(
-                                "saturated-fat_100g"
-                            ),
-                            sugars_for_100g=product["nutriments"].get(
-                                "sugars_100g"
-                            ),
-                            salt_for_100g=product["nutriments"].get(
-                                "salt_100g"
+                        try:
+                            Product.objects.filter(
+                                barcode=product.get("code", None)).update(
+                                name=product.get("product_name_fr"),
+                                category_id=Category.objects.get(
+                                    name=category
+                                ),
+                                store=product.get('stores'),
+                                nutriscore=product.get("nutriscore_grade"),
+                                image=product.get("image_url"),
+                                url=product.get("url"),
+                                lipids_for_100g=product["nutriments"].get(
+                                    "fat_100g"
+                                ),
+                                saturated_fats_for_100g=product["nutriments"].get(
+                                    "saturated-fat_100g"
+                                ),
+                                sugars_for_100g=product["nutriments"].get(
+                                    "sugars_100g"
+                                ),
+                                salt_for_100g=product["nutriments"].get(
+                                    "salt_100g"
+                                )
                             )
-                        )
+                        except (IntegrityError, DecimalException):
+                            pass
