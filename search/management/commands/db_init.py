@@ -7,13 +7,9 @@ Licence: `GNU GPL v3` GNU GPL v3: http://www.gnu.org/licenses/
 
 """
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from .database import Database
-import requests
-
-NUTRISCORE_FR = ["a", "b", "c", "d", "e"]
-STDOUT=True
 
 
 class Command(BaseCommand):
